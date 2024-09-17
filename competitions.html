@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompeteBetter - Competitions</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  nav {
+    background: linear-gradient(120deg, #46a2e1, #54c7ec);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: navGradient 10s infinite linear;
+  }
+
+  @keyframes navGradient {
+    0% {
+      background: linear-gradient(120deg, #46a2e1, #54c7ec);
+    }
+
+    50% {
+      background: linear-gradient(120deg, #54c7ec, #46a2e1);
+    }
+
+    100% {
+      background: linear-gradient(120deg, #46a2e1, #54c7ec);
+    }
+  }
+
+  nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+  }
+
+  nav:hover::before {
+    opacity: 0;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s, transform 0.3s, letter-spacing 0.2s, font-weight 0.2s;
+    tabindex: 0;
+  }
+
+  nav a.index::before {
+    content: '\f015';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+  }
+
+  nav a.competitions::before {
+    content: '\f12e';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+  }
+
+  nav a.awards::before {
+    content: '\f091';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+  }
+
+  nav a.teamup::before {
+    content: '\f19d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+  }
+
+  nav a:hover {
+    color: #e6f7ff;
+    transform: scale(1.1);
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  .container {
+    width: 80%;
+    margin: 40px auto;
+    max-width: 1200px;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .competitions-header {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .competitions-header h1 {
+    font-size: 3em;
+    color: #46a2e1;
+    margin-bottom: 40px;
+  }
+
+  /* 修改这里 */
+  /* 其他样式保持不变 */
+
+.competition-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.competition-item {
+  background-color: #46a2e1; /* 初始背景颜色 */
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(33.33% - 20px); /* 一排显示3个 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, background-color 0.3s; /* 添加背景颜色的过渡效果 */
+  /* 随机延迟出现 */
+  animation: appearRandomDelay 2s ease-out;
+}
+
+@keyframes appearRandomDelay {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.competition-item:hover {
+  transform: translateY(-10px);
+}
+
+/* 媒体查询，用于在不同屏幕尺寸下调整元素的宽度 */
+@media (max-width: 1200px) {
+  .competition-item {
+    width: calc(50% - 20px); /* 中等屏幕一排显示2个 */
+  }
+}
+
+@media (max-width: 768px) {
+  .competition-item {
+    width: calc(100% - 20px); /* 小屏幕一排显示1个 */
+  }
+}
+
+/* 随机背景颜色 */
+.competition-item.A {
+  background-color: red;
+}
+
+.competition-item.B {
+  background-color: blue;
+}
+
+.competition-item.C {
+  background-color: green;
+}
+
+.competition-item.D {
+  background-color: orange;
+}
+
+/* 添加更多随机颜色 */
+.competition-item.E {
+  background-color: #ff7f50;
+}
+
+.competition-item.F {
+  background-color: #87ceeb;
+}
+
+.competition-item.G {
+  background-color: #da70d6;
+}
+
+.competition-item.H {
+  background-color: #32cd32;
+}
+
+/* 动态随机分配背景颜色 */
+.competition-item {
+  /* 使用CSS变量来存储随机颜色 */
+  --random-color: #46a2e1;
+  /* 随机选择一个颜色类 */
+  background-color: var(--random-color);
+}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div>
+      <a href="index.html" class="index" tabindex="1">主页</a>
+      <a href="competitions.html" class="competitions" tabindex="2">近期比赛</a>
+      <a href="awards.html" class="awards" tabindex="3">个人奖项</a>
+      <a href="team up.html" class="teamup" tabindex="4">组队</a>
+    </div>
+    <div class="search-container">
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="login-register">
+      <a href="login.html" tabindex="5">登录</a>
+      <a href="register.html" tabindex="6">注册</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="competitions-header">
+      <h1>近期比赛</h1>
+    </div>
+    <div id="competitions-container">
+      <!-- 这里可以添加一个加载状态的元素，比如一个旋转的图标或者文字 -->
+      <div class="loading-indicator">正在加载近期比赛信息，请稍候...</div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
