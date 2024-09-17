@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A类')
-   .then(response => response.json())
-   .then(issues => {
+  fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A%E7%B1%BB')
+  .then(response => response.json())
+  .then(issues => {
       const competitionsContainer = document.getElementById('competitions-container');
       issues.forEach(issue => {
         const competitionItem = document.createElement('div');
@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', function() {
         competitionsContainer.appendChild(competitionItem);
       });
     })
-   .catch(error => console.error('Error fetching issues:', error));
+  .catch(error => console.error('Error fetching issues:', error));
 });
