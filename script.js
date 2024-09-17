@@ -7,55 +7,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 使用 GitHub API 获取 issues 数据
     fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues')
-       .then(response => response.json())
-       .then(issues => {
+      .then(response => response.json())
+      .then(issues => {
             console.log('Received issues:', issues);
             const competitionsContainer = document.getElementById('competitions-container');
             issues.forEach(issue => {
                 const competitionItem = document.createElement('div');
                 competitionItem.classList.add('competition-item');
-                let formattedTitle = issue.title;
-                let formattedBody = issue.body;
 
-                // 识别标题
-                formattedTitle = formattedTitle.replace(/^###\s(.+)$/gm, '<h3>$1</h3>');
-                formattedBody = formattedBody.replace(/^###\s(.+)$/gm, '<h3>$1</h3>');
+                const formattedTitle = formatText(issue.title);
+                const formattedBody = formatText(issue.body);
 
-                // 识别链接
-                formattedBody = formattedBody.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-
-                // 处理换行
-                formattedTitle = formattedTitle.replace(/\n/g, '<br>');
-                formattedBody = formattedBody.replace(/\n/g, '<br>');
-
-                let backgroundColor;
-                if (issue.labels && issue.labels.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * issue.labels.length);
-                    const randomLabel = issue.labels[randomIndex];
-                    const decodedLabelName = decodeURIComponent(randomLabel.name);
-                    console.log('Decoded label name for issue:', decodedLabelName);
-                    switch (decodedLabelName) {
-                        case 'A%E7%B1%BB':
-                            backgroundColor = 'red';
-                            break;
-                        case 'B%E7%B1%BB':
-                            backgroundColor = 'blue';
-                            break;
-                        case 'C%E7%B1%BB':
-                            backgroundColor = 'green';
-                            break;
-                        case 'D%E7%B1%BB':
-                            backgroundColor = 'orange';
-                            break;
-                        default:
-                            backgroundColor = getRandomColor();
-                    }
-                } else {
-                    backgroundColor = getRandomColor();
-                }
+                let backgroundColor = getBackgroundColor(issue.labels);
 
                 console.log('Selected background color for issue:', backgroundColor);
                 competitionItem.style.backgroundColor = backgroundColor;
+
+                // 调整文字颜色为黑色以确保清晰可见
+                competitionItem.style.color = '#000';
 
                 competitionItem.innerHTML = `
                     <h2 class="competition-title">${formattedTitle}</h2>
@@ -64,13 +33,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 competitionsContainer.appendChild(competitionItem);
             });
         })
-       .catch(error => {
+      .catch(error => {
             console.error('获取 issues 数据时出现错误：', error);
         });
 });
 
+function formatText(text) {
+    if (!text) return '';
+
+    // 识别标题和链接
+    let formattedText = text
+      .replace(/^###\s(.+)$/gm, '<h3>\$1</h3>')  // 处理三级标题
+      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="\$2">\$1</a>')  // 处理链接
+      .replace(/\n/g, '<br>');  // 处理换行
+
+    return formattedText;
+}
+
+function getBackgroundColor(labels) {
+    if (labels && labels.length > 0) {
+        const randomIndex = Math.floor(Math.random() * labels.length);
+        const labelName = decodeURIComponent(labels[randomIndex].name);
+        console.log('Decoded label name for issue:', labelName);
+
+        switch (labelName) {
+            case 'A类':
+                return '#ff6347'; 
+            case 'B类':
+                return '#ffa500'; 
+            case 'C类':
+                return '#87ceeb'; 
+            case 'D类':
+                return '#90ee90'; 
+            default:
+                return getRandomColor();
+        }
+    }
+    return getRandomColor();
+}
+
 function getRandomColor() {
-    const colors = ['#ff7f50', '#87ceeb', '#da70d6', '#32cd32'];
+    const colors = ['#ffa07a', '#afeeee', '#d8bfd8', '#add8e6'];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
