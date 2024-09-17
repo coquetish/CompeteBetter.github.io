@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompeteBetter - Team Up</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    nav {
+      background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      animation: navGradient 10s infinite linear;
+    }
+
+    @keyframes navGradient {
+      0% {
+        background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      }
+
+      50% {
+        background: linear-gradient(120deg, #54c7ec, #46a2e1);
+      }
+
+      100% {
+        background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      }
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      transition: opacity 0.3s;
+      border-radius: 10px;
+    }
+
+    nav:hover::before {
+      opacity: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s, transform 0.3s, letter-spacing 0.2s, font-weight 0.2s;
+    }
+
+    nav a.index::before {
+      content: '\f015';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.competitions::before {
+      content: '\f12e';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.awards::before {
+      content: '\f091';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.team up::before {
+      content: '\f19d';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a:hover {
+      color: #e6f7ff;
+      transform: scale(1.1);
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 80%;
+      margin: 40px auto;
+      max-width: 1200px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .team up-header {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .team up-header h1 {
+      font-size: 3em;
+      color: #46a2e1;
+      margin-bottom: 40px;
+    }
+
+    .search-form {
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #46a2e1;
+    }
+
+    .search-form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #46a2e1;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #46a2e1;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-form button:hover {
+      background-color: #54c7ec;
+    }
+
+    .team-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .team-item {
+      background-color: #46a2e1;
+      color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      width: 48%;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .team-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-title {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .team-details {
+      font-size: 1em;
+    }
+
+    .team-info {
+      font-size: 0.8em;
+      color: #e6f7ff;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div>
+      <a href="index.html" class="index">主页</a>
+      <a href="competitions.html" class="competitions">近期比赛</a>
+      <a href="awards.html" class="awards">个人奖项</a>
+      <a href="team up.html" class="team up">组队</a>
+    </div>
+    <div class="search-container">
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="login-register">
+      <a href="login.html">登录</a>
+      <a href="register.html">注册</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="team up-header">
+      <h1>组队</h1>
+    </div>
+
+    <div class="search-form">
+      <label for="specialty">特长:</label>
+      <select id="specialty">
+        <option value="coding">代码</option>
+        <option value="math">数学</option>
+        <option value="writing">写作</option>
+        <option value="design">设计</option>
+        <option value="creative">创意</option>
+        <option value="music">音乐</option>
+        <option value="publicSpeaking">公共演讲</option>
+        <option value="webDev">网页开发</option>
+        <option value="appDev">移动应用开发</option>
+        <option value="gameDev">游戏开发</option>
+        <option value="dataScience">数据科学</option>
+        <option value="machineLearning">机器学习</option>
+        <option value="ai">人工智能</option>
+        <option value="algorithms">算法设计</option>
+        <option value="embeddedSystems">嵌入式系统</option>
+        <option value="networking">网络工程</option>
+        <option value="cybersecurity">网络安全</option>
+        <option value="databaseAdmin">数据库管理</option>
+        <option value="systemAdmin">系统管理</option>
+        <!-- Add more options as needed -->
+      </select>
+
+      <label for="interest">兴趣:</label>
+      <select id="interest">
+        <option value="math">数学</option>
+        <option value="algorithm">算法</option>
+        <option value="writing">写作</option>
+        <option value="coding">代码</option>
+        <option value="appDevelopment">应用开发</option>
+        <option value="webDevelopment">网页开发</option>
+        <option value="userExperience">用户体验</option>
+        <option value="graphicDesign">平面设计</option>
+        <option value="socialMedia">社交媒体</option>
+        <option value="internetOfThings">物联网</option>
+        <option value="machineLearning">机器学习</option>
+        <option value="artificialIntelligence">人工智能</option>
+        <option value="dataAnalysis">数据分析</option>
+        <option value="webFrameworks">Web框架</option>
+        <option value="appFrameworks">应用框架</option>
+        <!-- Add more options as needed -->
+      </select>
+
+      <button>查询队伍</button>
+    </div>
+      <!-- Add more team items as needed -->
+    </div>
+</body>
+
+</html>

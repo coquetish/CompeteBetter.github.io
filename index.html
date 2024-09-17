@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompeteBetter</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    nav {
+      background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      animation: navGradient 10s infinite linear;
+    }
+
+    @keyframes navGradient {
+      0% {
+        background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      }
+
+      50% {
+        background: linear-gradient(120deg, #54c7ec, #46a2e1);
+      }
+
+      100% {
+        background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      }
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      transition: opacity 0.3s;
+      border-radius: 10px;
+    }
+
+    nav:hover::before {
+      opacity: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 16px;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s, transform 0.3s, letter-spacing 0.2s, font-weight 0.2s;
+    }
+
+    nav a.index::before {
+      content: '\f015';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.competitions::before {
+      content: '\f12e';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.awards::before {
+      content: '\f091';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a.teamup::before {
+      content: '\f19d';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 5px;
+    }
+
+    nav a:hover {
+      color: #e6f7ff;
+      transform: scale(1.1);
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 80%;
+      margin: 40px auto;
+      max-width: 1200px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .header h1 {
+      font-size: 3em;
+      /*?????? */
+      /* text-shadow: 0 0 10px #46a2e1, 0 0 20px #46a2e1, 0 0 30px #46a2e1; */
+      margin-bottom: 40px;
+    }
+
+    /*??????? */
+    .search-container {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+    }
+
+    .search-container i {
+      color: #fff;
+    }
+
+    /*?????? */
+    .big-search {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .big-search input[type="text"] {
+      width: 60%;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    /*??????? */
+    .login-register {
+      position: absolute;
+      top: 20px;
+      right: 120px;
+    }
+
+    .login-register a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .competitions-section {
+      margin-top: 40px;
+    }
+
+    .competition-category {
+      margin-bottom: 30px;
+    }
+
+    .competition-category h2 {
+      font-size: 24px;
+    }
+
+   .competition-category h2.a-category {
+    color: #ff6347; /* 淡一点的红色 */
+  }
+
+    .competition-category h2.b-category {
+    color: #ffa500; /* 橙色 */
+  }
+
+    .competition-category h2.c-category {
+    color: #87ceeb; /* 淡一点的蓝色 */
+  }
+
+    .competition-category h2.d-category {
+    color: #90ee90; /* 淡一点的绿色 */
+  }
+
+    .competition-item {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .competition-item a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div>
+      <a href="index.html" class="index">主页</a>
+      <a href="competitions.html" class="competitions">近期比赛</a>
+      <a href="awards.html" class="awards">个人奖项</a>
+      <a href="team up.html" class="teamup">组队</a>
+    </div>
+    <div class="search-container">
+      <!-- <i class="fas fa-search"></i> -->
+    </div>
+    <div class="login-register">
+      <a href="login.html">登录</a>
+      <a href="register.html">注册</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>Welcome to CompeteBetter</h1>
+    </div>
+
+    <div class="competitions-section">
+      <div class="competition-category">
+        <h2 class="a-category">A 类竞赛</h2>
+        <div class="competition-item">
+          <a href="https://icpc.pku.edu.cn/">国际大学生竞赛设计竞赛（ICPC）</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://www.gcxl.edu.cn/new/index.html">中国大学生工程实践与创新能力大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://cnrobocon.net/">全国大学生机器人大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.nuedc-training.com.cn/">全国大学生电子设计竞赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://astar.baidu.com/#/">百度之星程序设计竞赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://ccpc.io/">中国大学生程序设计竞赛（CCPC）</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.mcm.edu.cn/">全国大学生数学建模竞赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.tiaozhanbei.net/">“挑战杯”中国大学生创业计划大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.huawei.com/minisite/ict-competition-2023-2024-global/cn/index.html">华为ICT大赛</a>
+        </div>
+      </div>
+      <div class="competition-category">
+        <h2 class="b-category">B 类竞赛</h2>
+        <div class="competition-item">
+          <a href="https://jsjds.blcu.edu.cn/index.htm">中国大学生计算机设计大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://dasai.lanqiao.cn/">蓝桥杯全国软件和信息技术专业人才大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.datafountain.cn/special/BDCI2023?preview=true">CCF 大数据与计算智能大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.raicom.com.cn/">睿抗机器人开发者大赛（RAICOM）</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://fzs.newoe.cn/">泛珠三角 + 大学生计算机作品赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://www.ciscn.cn/">全国大学生信息安全竞赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://www.cmit.cn/">全国大学生数字媒体科技作品及创意竞赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://www.heywhale.com/home/competition/6662bf9a8d6c97c5d0c6bb10">中国高校计算机大赛-大数据挑战赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://gplt.patest.cn/regulation">中国高校计算机大赛-团体程序设计天梯赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://aicontest.baidu.com/">中国高校计算机大赛-人工智能创意赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="http://net.c4best.cn/">中国高校计算机大赛-网络技术挑战赛</a>
+        </div>
+      </div>
+      <!-- 其他类别竞赛以此类推 -->
+      <div class="competition-category">
+        <h2 class="c-category">C 类竞赛</h2>
+        <div class="competition-item">
+          <a href="https://www.yznu.edu.cn/">校级竞赛</a>
+        </div>
+      </div>
+      <div class="competition-category">
+        <h2 class="d-category">D 类竞赛</h2>
+        <div class="competition-item">
+          <a href="https://www.yznu.edu.cn/">院级竞赛</a>
+        </div>
+      </div>
+    </div>
+
+    <!--???? -->
+    <div id="login-page" style="display:none;">
+      <h2>Login</h2>
+      <form>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!--???? -->
+    <div id="register-page" style="display:none;">
+      <h2>Register</h2>
+      <form>
+        <input type="text" placeholder="Username">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    //?????? JavaScript??????????????????
+  </script>
+</body>
+
+</html>
