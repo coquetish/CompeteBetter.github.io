@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 使用 GitHub API 获取 issues 数据
     fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A%E7%B1%BB')
-       .then(response => response.json())
-       .then(issues => {
+       。then(response => response.json())
+       。then(issues => {
             const competitionsContainer = document.getElementById('competitions-container');
             issues.forEach(issue => {
                 const competitionItem = document.createElement('div');
@@ -30,12 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 competitionItem.innerHTML = `
                     <h2 class="competition-title">${formattedTitle}</h2>
                     <p class="competition-details">${formattedBody}</p>
-                    <p class="competition-category">未知类别（可根据实际情况从 issue 中提取类别信息）</p>
-                `;
+                ;
                 competitionsContainer.appendChild(competitionItem);
             });
         })
-       .catch(error => {
+       。catch(error => {
             console.error('获取 issues 数据时出现错误：', error);
         });
 });
