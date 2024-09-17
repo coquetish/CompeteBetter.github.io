@@ -8,17 +8,22 @@ document.addEventListener('DOMContentLoaded', function () {
         displayIssues(issues);
     } else {
         fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A%E7%B1%BB')
-           .then(response => {
+         .then(response => {
+                console.log('Response status code:', response.status);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
-           .then(issues => {
+         .then(issues => {
+                console.log('Number of issues fetched:', issues.length);
+                if (issues.length > 0) {
+                    console.log('First issue title:', issues[0].title);
+                }
                 localStorage.setItem(cacheKey, JSON.stringify(issues));
                 displayIssues(issues);
             })
-           .catch(error => {
+         .catch(error => {
                 console.error('Error fetching issues:', error);
                 competitionsContainer.innerHTML = '<p>无法获取近期比赛信息，请稍后再试。</p>';
             });
