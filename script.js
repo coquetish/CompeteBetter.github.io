@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A类竞赛')
+  fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A类')
    .then(response => response.json())
    .then(issues => {
       const competitionsContainer = document.getElementById('competitions-container');
