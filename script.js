@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 competitionItem.innerHTML = `
                     <h2 class="competition-title">${formattedTitle}</h2>
                     <p class="competition-details">${formattedBody}</p>
-                    <p class="competition-category">未知类别（可根据实际情况从 issue 中提取类别信息）</p>
                 `;
                 competitionsContainer.appendChild(competitionItem);
             });
