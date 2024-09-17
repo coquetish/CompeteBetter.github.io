@@ -16,11 +16,3 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   .catch(error => console.error('Error fetching issues:', error));
 });
-
-
-   const renderedBody = marked(issue.body);
-   competitionItem.innerHTML = `
-     <h3>${issue.title}</h3>
-     <p><a href="${issue.html_url}">更多信息</a></p>
-     <p>${renderedBody}</p>
-   `;
