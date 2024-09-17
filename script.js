@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         competitionItem.className = 'competition-item';
         competitionItem.innerHTML = `
           <h3>${issue.title}</h3>
-          <p><a href="${issue.html_url}">更多信息</a></p>
+          <p><a href="${issue.html_url}">比赛信息</a></p>
           <p>${issue.body}</p>
         `;
         competitionsContainer.appendChild(competitionItem);
