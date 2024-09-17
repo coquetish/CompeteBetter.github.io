@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 使用 GitHub API 获取 issues 数据
-    fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues?labels=A%E7%B1%BB')
+    fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues')
        .then(response => response.json())
        .then(issues => {
             const competitionsContainer = document.getElementById('competitions-container');
