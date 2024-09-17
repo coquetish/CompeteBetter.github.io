@@ -129,12 +129,12 @@
 
     .header h1 {
       font-size: 3em;
-      /* ?????? */
+      /*?????? */
       /* text-shadow: 0 0 10px #46a2e1, 0 0 20px #46a2e1, 0 0 30px #46a2e1; */
       margin-bottom: 40px;
     }
 
-    /* ??????? */
+    /*??????? */
     .search-container {
       position: absolute;
       top: 20px;
@@ -145,7 +145,7 @@
       color: #fff;
     }
 
-    /* ?????? */
+    /*?????? */
     .big-search {
       width: 80%;
       margin: 0 auto;
@@ -161,7 +161,7 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
-    /* ??????? */
+    /*??????? */
     .login-register {
       position: absolute;
       top: 20px;
@@ -172,6 +172,49 @@
       color: #fff;
       text-decoration: none;
       margin-left: 20px;
+    }
+
+    .competitions-section {
+      margin-top: 40px;
+    }
+
+    .competition-category {
+      margin-bottom: 30px;
+    }
+
+    .competition-category h2 {
+      font-size: 24px;
+    }
+
+   .competition-category h2.a-category {
+    color: #ff6347; /* 淡一点的红色 */
+  }
+
+    .competition-category h2.b-category {
+    color: #ffa500; /* 橙色 */
+  }
+
+    .competition-category h2.c-category {
+    color: #87ceeb; /* 淡一点的蓝色 */
+  }
+
+    .competition-category h2.d-category {
+    color: #90ee90; /* 淡一点的绿色 */
+  }
+
+    .competition-item {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .competition-item a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      display: block;
     }
   </style>
 </head>
@@ -185,7 +228,7 @@
       <a href="team up.html" class="teamup">Team Up</a>
     </div>
     <div class="search-container">
-      <i class="fas fa-search"></i>
+      <!-- <i class="fas fa-search"></i> -->
     </div>
     <div class="login-register">
       <a href="login.html">Login</a>
@@ -198,11 +241,62 @@
       <h1>Welcome to CompeteBetter</h1>
     </div>
 
-    <div class="big-search">
-      <input type="text" placeholder="Search with AI...">
+    <div class="competitions-section">
+      <div class="competition-category">
+        <h2 class="a-category">A 类竞赛</h2>
+        <div class="competition-item">
+          <a href="https://icpc.pku.edu.cn/">国际大学生竞赛设计竞赛（ICPC）</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+        <div class="competition-item">
+          <a href="https://cy.ncss.cn/">中国国际“互联网+”大学生创新创业大赛</a>
+        </div>
+      </div>
+      <div class="competition-category">
+        <h2 class="b-category">B 类竞赛</h2>
+        <div class="competition-item">
+          <a href="link_to_competition3.html">Competition B1</a>
+        </div>
+        <div class="competition-item">
+          <a href="link_to_competition4.html">Competition B2</a>
+        </div>
+      </div>
+      <!-- 其他类别竞赛以此类推 -->
+      <div class="competition-category">
+        <h2 class="c-category">C 类竞赛</h2>
+        <div class="competition-item">
+          <a href="link_to_competition3.html">Competition B1</a>
+        </div>
+      </div>
+      <div class="competition-category">
+        <h2 class="d-category">D 类竞赛</h2>
+        <div class="competition-item">
+          <a href="link_to_competition3.html">Competition B1</a>
+        </div>
+      </div>
     </div>
 
-    <!-- ???? -->
+    <!--???? -->
     <div id="login-page" style="display:none;">
       <h2>Login</h2>
       <form>
@@ -212,7 +306,7 @@
       </form>
     </div>
 
-    <!-- ???? -->
+    <!--???? -->
     <div id="register-page" style="display:none;">
       <h2>Register</h2>
       <form>
@@ -225,7 +319,7 @@
   </div>
 
   <script>
-    // ?????? JavaScript ??????????????????
+    //?????? JavaScript??????????????????
   </script>
 </body>
 
