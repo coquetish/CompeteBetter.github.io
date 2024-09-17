@@ -1,25 +1,27 @@
-   document.addEventListener('DOMContentLoaded', function () {
-       const competitionsContainer = document.getElementById('competitions-container');
-       competitionsContainer.innerHTML = '<p>正在加载近期比赛信息...</p>';
-       fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues')
-      .then(response => response.json())
-      .then(issues => {
-           competitionsContainer.innerHTML = '';
-           issues.forEach(issue => {
-               const competitionItem = document.createElement('div');
-               competitionItem.className = 'competition-item';
-               const htmlTitle = marked.parseInline(issue.title);
-               const htmlBody = marked.parse(issue.body);
-               competitionItem.innerHTML = `
-                   <h3>${htmlTitle}</h3>
-                   <p><a href="${issue.html_url}">更多信息</a></p>
-                   <p>${htmlBody}</p>
-               `;
-               competitionsContainer.appendChild(competitionItem);
-           });
-       })
-      .catch(error => {
-           console.error('Error fetching issues:', error);
-           competitionsContainer.innerHTML = '<p>无法获取近期比赛信息，请稍后再试。</p>';
-       });
-   });
+document.addEventListener('DOMContentLoaded', function () {
+    // 移除加载状态的元素
+    const loadingIndicator = document.querySelector('.loading-indicator');
+    if (loadingIndicator) {
+        loadingIndicator.remove();
+    }
+
+    // 使用 GitHub API 获取 issues 数据
+    fetch('https://api.github.com/repos/coquetish/CompeteBetter.github.io/issues')
+       .then(response => response.json())
+       .then(issues => {
+            const competitionsContainer = document.getElementById('competitions-container');
+            issues.forEach(issue => {
+                const competitionItem = document.createElement('div');
+                competitionItem.classList.add('competition-item');
+                competitionItem.innerHTML = `
+                    <h2 class="competition-title">${issue.title}</h2>
+                    <p class="competition-details">${issue.body}</p>
+                    <p class="competition-category">未知类别（可根据实际情况从 issue 中提取类别信息）</p>
+                `;
+                competitionsContainer.appendChild(competitionItem);
+            });
+        })
+       .catch(error => {
+            console.error('获取 issues 数据时出现错误：', error);
+        });
+});
