@@ -1,1 +1,23 @@
-
+name: Submit Award
+on:
+  repository_dispatch:
+    types: [submit-award]
+jobs:
+  save-award:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Save award
+        run: |
+          # 获取表单数据（假设通过环境变量传递）
+          awardData='{"semester":"${{ github.event.client_payload.semester }}","awardDate":"${{ github.event.client_payload.awardDate }}","awardCategory":"${{ github.event.client_payload.awardCategory }}","awardDescription":"${{ github.event.client_payload.awardDescription }}"}'
+          filePath='awards/data.json'
+          existingData=$(cat $filePath)
+          newData=$(echo "${existingData}[${awardData}]" | jq -s add)
+          echo $newData > $filePath
+          git config --global user.email "your_email@example.com"
+          git config --global user.name "Your Name"
+          git add $filePath
+          git commit -m "Add new award"
+          git push
