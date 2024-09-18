@@ -11,8 +11,16 @@ document.addEventListener('DOMContentLoaded', function () {
        .then(issues => {
             console.log('Received issues:', issues);
             const competitionsContainer = document.getElementById('competitions-container');
+            const table = document.createElement('table');
+            let rowCount = 0;
+            let cellCount = 0;
             issues.forEach(issue => {
-                const competitionItem = document.createElement('div');
+                if (cellCount === 0) {
+                    const tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    rowCount++;
+                }
+                const competitionItem = document.createElement('td');
                 competitionItem.classList.add('competition-item');
 
                 const formattedTitle = formatText(issue.title);
@@ -23,11 +31,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 competitionItem.style.color = '#000';
 
                 competitionItem.innerHTML = `<h2 class="competition-title">${formattedTitle}</h2><p class="competition-details">${formattedBody}</p>`;
-                competitionsContainer.appendChild(competitionItem);
+                table.children[rowCount - 1].appendChild(competitionItem);
+                cellCount++;
+                if (cellCount === 3) {
+                    cellCount = 0;
+                }
             });
+            competitionsContainer.appendChild(table);
         })
        .catch(error => {
             console.error('获取 issues 数据时出现错误：', error);
+            const competitionsContainer = document.getElementById('competitions-container');
+            const errorMessage = document.createElement('div');
+            errorMessage.textContent = '无法获取比赛信息。请稍后再试或联系管理员。';
+            competitionsContainer.appendChild(errorMessage);
         });
 });
 
