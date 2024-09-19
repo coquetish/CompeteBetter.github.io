@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人奖项展示</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background: linear-gradient(120deg, #46a2e1, #54c7ec);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: navGradient 10s infinite linear;
+        }
+
+        @keyframes navGradient {
+            0% {
+                background: linear-gradient(120deg, #46a2e1, #54c7ec);
+            }
+
+            50% {
+                background: linear-gradient(120deg, #54c7ec, #46a2e1);
+            }
+
+            100% {
+                background: linear-gradient(120deg, #46a2e1, #54c7ec);
+            }
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            transition: opacity 0.3s;
+            border-radius: 10px;
+        }
+
+        nav:hover::before {
+            opacity: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s, transform 0.3s, letter-spacing 0.2s, font-weight 0.2s;
+        }
+
+        nav a.index::before {
+            content: '\f015';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        nav a.competitions::before {
+            content: '\f12e';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        nav a.awards::before {
+            content: '\f091';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        nav a.teamup::before {
+            content: '\f19d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        nav a:hover {
+            color: #e6f7ff;
+            transform: scale(1.1);
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            max-width: 1200px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .awards-header {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="file"] {
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        button {
+            background: linear-gradient(120deg, #46a2e1, #54c7ec);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <a href="index.html" class="index">主页</a>
+            <a href="competitions.html" class="competitions">近期比赛</a>
+            <a href="awards.html" class="awards">个人奖项</a>
+            <a href="team up.html" class="teamup">组队</a>
+            <a href="https://support.qq.com/products/669655/" class="tlq" tabindex="5">讨论区</a>
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="login-register">
+            <a href="login.html">登录</a>
+            <a href="register.html">注册</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="awards-header">
+            <h1>上传奖项</h1>
+        </div>
+
+        <form id="awardForm" action="awards.html" method="get">
+            <label for="semester">学期：</label>
+            <input type="text" id="semester" placeholder="例如：大一上学期" name="semester">
+
+            <label for="awardDate">获奖时间：</label>
+            <input type="date" id="awardDate" name="awardDate">
+
+            <label for="awardCategory">奖项类别：</label>
+            <select id="awardCategory" name="awardCategory">
+                <option value="academic">A 类</option>
+                <option value="extracurricular">B 类</option>
+                <option value="other">C 类</option>
+                <option value="others">D 类</option>
+            </select>
+
+            <label for="awardDescription">奖项描述：</label>
+            <textarea id="awardDescription" placeholder="简要描述奖项" name="awardDescription"></textarea>
+
+            <label for="awardImage">上传图片（可选）：</label>
+            <input type="file" id="awardImage" name="awardImage">
+
+            <button type="submit">提交奖项</button>
+        </form>
+
+    </div>
+
+    <script>
+        document.getElementById('awardForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            await fetch('https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO_NAME/dispatches', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'token YOUR_GITHUB_TOKEN',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'event_type': 'submit-award',
+                    'client_payload': data
+                })
+            });
+            window.location.href = 'awards.html';
+        });
+    </script>
+</body>
+
+</html>
