@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CompeteBetter - Awards</title>
+  <title>个人奖项展示</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
@@ -51,7 +51,7 @@
       width: 100%;
       height: 100%;
       background: rgba(255, 255, 255, 0.1);
-      z-home: 1;
+      z-index: 1;
       transition: opacity 0.3s;
       border-radius: 10px;
     }
@@ -66,11 +66,11 @@
       margin: 0 15px;
       font-size: 16px;
       position: relative;
-      z-home: 2;
+      z-index: 2;
       transition: color 0.3s, transform 0.3s, letter-spacing 0.2s, font-weight 0.2s;
     }
 
-    nav a.home::before {
+    nav a.index::before {
       content: '\f015';
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
@@ -124,60 +124,40 @@
 
     .awards-header {
       text-align: center;
-      margin-top: 50px;
-    }
-
-    .awards-header h1 {
-      font-size: 3em;
-      color: #46a2e1;
-      margin-bottom: 40px;
-    }
-
-    .user-info {
-      background-color: #f2f2f2;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .user-info h2 {
-      color: #46a2e1;
-      margin-bottom: 15px;
-    }
-
-    .user-info p {
-      margin: 5px 0;
-    }
-
-    .awards-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
     }
 
     .award-item {
-      background-color: #46a2e1;
-      color: #fff;
+      background-color: #f9f9f9;
       padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 30px;
-      width: 48%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .award-item h3 {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .award-item p {
+      font-size: 14px;
+      color: #666;
+      margin: 5px 0;
+    }
+
+    button {
+      background: linear-gradient(120deg, #46a2e1, #54c7ec);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s;
     }
 
-    .award-item:hover {
-      transform: translateY(-10px);
-    }
-
-    .award-title {
-      font-size: 1.5em;
-      margin-bottom: 15px;
-    }
-
-    .award-details {
-      font-size: 1em;
+    button:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -185,7 +165,7 @@
 <body>
   <nav>
     <div>
-      <a href="index.html" class="home">主页</a>
+      <a href="index.html" class="index">主页</a>
       <a href="competitions.html" class="competitions">近期比赛</a>
       <a href="awards.html" class="awards">个人奖项</a>
       <a href="team up.html" class="teamup">组队</a>
@@ -202,13 +182,26 @@
 
   <div class="container">
     <div class="awards-header">
-      <h1>个人奖项</h1>
+      <h1>个人奖项展示</h1>
     </div>
 
-   
-
-      <!-- Add more award items as needed -->
+    <!-- 奖项列表 -->
+    <div id="awardsList">
+      <!-- 奖项项示例 -->
+      <div class="award-item">
+        <h3>奖项名称</h3>
+        <p>学期：大一上学期</p>
+        <p>获奖时间：2024-09-18</p>
+        <p>奖项类别：A 类</p>
+        <p>奖项描述：这是一个示例奖项描述。</p>
+        <img src="path_to_image.jpg" alt="奖项图片">
+      </div>
     </div>
+
+    <!-- 上传奖项按钮 -->
+    <button onclick="location.href='pushup.html'">上传奖项</button>
+  </div>
+
 </body>
 
 </html>
